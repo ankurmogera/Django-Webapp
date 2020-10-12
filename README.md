@@ -1,7 +1,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 # Contactbook
 #### A small webapp built as a part of learning django.
-### Version
+### Tools
 * Python 3.8.0
 * Django 3.1
 * HTML5
