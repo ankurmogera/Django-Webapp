@@ -4,6 +4,7 @@
 ### Tools
 * Python 3.8.0
 * Django 3.1
+* Sqlite db
 * HTML5
 * CSS
 * Javascript
