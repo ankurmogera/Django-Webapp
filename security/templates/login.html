@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css">
+</head>
+
+<body>
+{% if user.username %}
+    <div class="navbar">
+        <a >Contactbook App</a>
+        <a style="float:right" href="{% url 'logout' %}">Logout</a>
+        <a style="float:right">{{ user.username }}</a>
+    </div>
+{% else %}
+    <div class="navbar">
+        <a>Contactbook App</a>
+        <a style="float: right" href="{% url 'registerUser' %}">Register</a>
+        <a style="float: right" href= "/">Home</a>
+        <a>Login Page</a>
+    </div>
+    <main class="main">
+        <form method="POST" action="#">
+            {% csrf_token %}
+            <div>
+                <label>{{ form.username.label_tag }}:</label>
+            </div>
+            {{ form.username }}
+            {{ form.username.errors }}
+            <div>
+                <label>{{ form.password.label_tag }}</label>
+            </div>
+            {{ form.password }}
+            {{ form.password.errors }}
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+{% endif %}
+
+
+</body>
+</html>
