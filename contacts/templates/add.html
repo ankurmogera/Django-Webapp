@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Record</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css">
+</head>
+<body>
+    <div class="navbar">
+        <a>Contactbook App</a>
+        <a>Add Records</a>
+        <a style="float: right" href="{% url 'logout' %}">Logout</a>
+        <a style="float: right" href="{% url 'dashboard' %}">{{ user.username }}</a>
+    </div>
+    <main class="main">
+        <h1>{{ title }}</h1>
+        <form method="POST" action="#">
+            {% csrf_token %}
+        <table>
+            {{ form }}
+         </table>
+            <input type="submit" value="{{ button }}">
+         </form>
+    </main>
+</body>
+</html>
