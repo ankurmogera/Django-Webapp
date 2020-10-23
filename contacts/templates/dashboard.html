@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="http://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css">
+</head>
+
+<body>
+    <div class="navbar">
+        <a>Contactbook App</a>
+        <a>Dashboard</a>
+        <a style="float: right" href="{% url 'logout' %}">Logout</a>
+        <a style="float: right" href="{% url 'dashboard' %}">{{ user.username }}</a>
+    </div>
+
+    <main class="main">
+        <h3><a href="{% url 'add' %}">Add New Contact</a></h3>
+        {% if data %}
+
+        <table border="1" id="myTable" class="display" style="width:100%">
+            <thead>
+                <th>id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>phone_number</th>
+                <th>email</th>
+                <th>dob</th>
+                <th>Actions</th>
+            </thead>
+
+        <tbody>
+            {% for record in data %}
+            <tr>
+                <td>{{record.id}}</td>
+                <td>{{record.first_name}}</td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.phone_number}}</td>
+                <td>{{record.email}}</td>
+                <td>{{record.dob}}</td>
+                <td><a href="{% url 'edit' record.id %}">Update</a> | <a href="{% url 'delete' record.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+        </table>
+        {% endif %}
+    </main>
+
+    <script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();
+        } );
+    </script>
+
+</body>
+</html>
